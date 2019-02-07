@@ -13,7 +13,7 @@ class CreateOrderDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('children', function (Blueprint $table) {
+        Schema::create('order_details', function (Blueprint $table) {
             $table->increments('id');
             
             $table->unsignedInteger('order_ID')->nullable();

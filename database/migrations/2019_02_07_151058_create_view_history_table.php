@@ -13,7 +13,7 @@ class CreateViewHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('children', function (Blueprint $table) {
+        Schema::create('view_history', function (Blueprint $table) {
             $table->increments('id');
 
             $table->unsignedInteger('customer_ID')->nullable();
@@ -24,7 +24,7 @@ class CreateViewHistoryTable extends Migration
     
             $table->index('customer_ID');
             $table->index('product_ID');
-            
+
             $table->timestamps();
         });
     }
@@ -37,5 +37,6 @@ class CreateViewHistoryTable extends Migration
     public function down()
     {
         Schema::dropIfExists('children');
+
     }
 }
