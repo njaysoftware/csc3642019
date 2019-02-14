@@ -11,6 +11,10 @@
 |
 */
 
+
+Route::resource('/suppliers', 'SupplierController');
+
+
 Route::get('/', function () {
     return view('welcome');
 });

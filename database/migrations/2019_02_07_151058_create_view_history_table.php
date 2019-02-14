@@ -40,3 +40,4 @@ class CreateViewHistoryTable extends Migration
 
     }
 }
+
