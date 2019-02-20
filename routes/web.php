@@ -11,10 +11,11 @@
 |
 */
 
-
+//route for supplier information
 Route::resource('/suppliers', 'SupplierController');
-
-
+//route for products information
+Route::resource('/products', 'ProductController');
+//route for the laravel framework
 Route::get('/', function () {
     return view('welcome');
 });
