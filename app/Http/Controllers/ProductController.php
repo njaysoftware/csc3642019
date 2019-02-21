@@ -15,8 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        //gets the data from the database
         $products = Product::get()->toArray();
-        
+        //returns the index view with all the data and products already popluted
         return view('Products.index')->with('products', $products);
     }
 
@@ -27,6 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        //shows the view page
         return view('Products.create');
     }
 
@@ -38,12 +40,13 @@ class ProductController extends Controller
      */
     public function store(productRequest $request)
     {
+        //gets the data from the form
         $data = $request->all();
-
+        //this line adds the data added by default
         $data['date_added'] = Carbon::now('America/New_York');
-
+        //creates the row in the product table for the data that has been validated already
         $product = Product::create($data);
-
+        //sends the user back to the product.index page after they have submitted the quiz
         return redirect()->route('products.index');
     }
 
