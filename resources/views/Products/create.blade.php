@@ -1,12 +1,18 @@
 @extends('layouts.main')
 
 @section('content')
+<link rel="stylesheet" href="/css/app.css">
+<div class="row" >
+    <div id="titleOfProductsCreatePage" class="col-xs-4 h3 mx-auto">
+        <div class="text-center">Please enter product information</div>
+    </div>
+</div>
 <form action="{{route('products.store')}}" method="POST">
     @csrf
     <div class="form-group row">
       <label for="description" class="col-6 col-form-label">Description</label> 
       <div class="col-6">
-        <input id="description" name="description" placeholder="Description of Product" type="text"  class="form-control">
+        <input id="description" name="description" value="{{ old('description') }}"placeholder="Description of Product" type="text"  class="form-control">
       </div>
     </div>
     <div class="form-group row">
@@ -18,7 +24,7 @@
               <i class="fa fa-money"></i>
             </div>
           </div> 
-          <input id="price" name="price" placeholder="Price of Product" type="text"  class="form-control">
+          <input id="price" name="price" value="{{ old('price') }}"placeholder="Price of Product" type="text"  class="form-control">
         </div>
       </div>
     </div>
@@ -31,7 +37,7 @@
               <i class="fa fa-file-picture-o"></i>
             </div>
           </div> 
-          <input id="picture" name="picture" placeholder="Picture url" type="text" class="form-control">
+          <input id="picture" name="picture" value="{{ old('picture') }}"placeholder="Picture url" type="text" class="form-control">
         </div>
       </div>
     </div>
@@ -39,43 +45,30 @@
     <div class="form-group row">
       <label for="sku" class="col-6 col-form-label">SKU Number</label> 
       <div class="col-6">
-        <input id="sku" name="sku" placeholder="SKU number of Product" type="text" class="form-control">
+        <input id="sku" name="sku" value="{{ old('sku') }}"placeholder="SKU number of Product" type="text" class="form-control">
       </div>
     </div>
-
-    <div class="form-group row">
-      <label for="text" class="col-6 col-form-label">Date Added</label> 
-      <div class="col-6">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <i class="fa fa-calendar"></i>
-            </div>
-          </div> 
-          <input id="date_added" name="date_added" placeholder="Date that the product is being added" type="text" class="form-control">
-        </div>
-      </div>
-    </div> 
     
     <div class="form-group row">
       <label for="qty_available" class="col-6 col-form-label">Quantity</label> 
       <div class="col-6">
-        <input id="qty_available" name="qty_available" placeholder="Quantity of Product" type="text" class="form-control">
+        <input id="qty_available" value="{{ old('qty_available') }}"name="qty_available" placeholder="Quantity of Product" type="text" class="form-control">
       </div>
     </div>
 
     <div class="form-group row">
       <label for="supplier_ID" class="col-6 col-form-label">Supplier ID</label> 
       <div class="col-6">
-        <input id="supplier_ID" name="supplier_ID" placeholder="Supplier's Id" type="text" class="form-control">
+        <input id="supplier_ID" value="{{ old('supplier_ID') }}" name="supplier_ID" placeholder="Supplier's Id" type="text" class="form-control">
       </div>
     </div>
     <div class="form-group row">
       <label for="supplier_SKU" class="col-6 col-form-label">Supplier SKU</label> 
       <div class="col-6">
-        <input id="supplier_SKU" name="supplier_SKU" placeholder="Supplier's SKU" type="text" class="form-control">
+        <input id="supplier_SKU" value="{{ old('supplier_SKU') }}"name="supplier_SKU" placeholder="Supplier's SKU" type="text" class="form-control">
       </div>
     </div>
+
     <div class="form-group row">
       <label for="cost" class="col-6 col-form-label">Cost</label> 
       <div class="col-6">
@@ -85,12 +78,12 @@
               <i class="fa fa-money"></i>
             </div>
           </div> 
-          <input id="cost" name="cost" placeholder="Cost of Product" type="text" class="form-control">
+          <input id="cost" name="cost" value="{{ old('cost') }}"placeholder="Cost of Product" type="text" class="form-control">
         </div>
       </div>
     </div> 
     <div class="form-group row">
-      <div class="offset-6 col-6">
+      <div class="offset-8 col-6">
         <button name="submit" type="submit" class="btn btn-primary">Create Product</button>
       </div>
     </div>

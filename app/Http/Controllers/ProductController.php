@@ -40,7 +40,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        $data['date_added'] = Carbon::now();
+        $data['date_added'] = Carbon::now('America/New_York');
 
         $product = Product::create($data);
 

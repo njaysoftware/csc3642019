@@ -1,12 +1,10 @@
 @extends('layouts.main')
 
-@section('content')
-
-    <div class="row">
-        <div class="col-xs-4 h3">Showing Suppliers</div>
-        <div class="col-xs-1 col-xs-offset-7" style="margin-top: 20px;">
-            <a href="{!! route('products.create') !!}" class="btn btn-xs btn-success pull-right" title="Create new Supplier">
-                <span class="glyphicon glyphicon-plus"></span> Products</a>
+@section('content')    
+<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+<div class="row" >
+        <div id="titleOfProductsPage" class="col-xs-4 h3 mx-auto">
+            <div class="text-center">Products Available</div>
         </div>
     </div>
 
@@ -16,15 +14,15 @@
                 {{-- Fx this for javascript --}}
                 <thead>
                 <tr>
-                    <th>description</th>
-                    <th>price</th>
-                    <th>picture</th>
-                    <th>sku</th>
-                    <th>qty_available</th> 
-                    <th>date_added</th> 
-                    <th>supplier_ID</th> 
-                    <th>supplier_SKU</th> 
-                    <th>cost</th>                   
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Picture</th>
+                    <th>SKU</th>
+                    <th>Qty Available</th> 
+                    <th>Date Added</th> 
+                    <th>Supplier ID</th> 
+                    <th>Supplier SKU</th> 
+                    <th>Cost</th>                   
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -50,10 +48,19 @@
             </table>
             <!--  $movies->links() !!} -->
         @else
+        <div class="col-md-6">
             <h4>No products are in the sytem yet</h4>
+        </div>       
         @endif
-
+    </div> 
+    
+    <div class="row">    <!--col-xs-1 col-xs-offset-7 text-center-->
+        <div class="col-md-2 mx-auto" style="margin-top: 20px;">
+            <a id="buttonToCreateNewProduct"href="{!! route('products.create') !!}" class="btn btn-xs btn-success text-align" title="Create new Supplier">
+                <span class="glyphicon glyphicon-plus"></span> Create a New Product</a>
+        </div>
     </div>
+    
 
 @stop
 

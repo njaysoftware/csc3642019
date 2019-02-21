@@ -7,13 +7,16 @@
 
     <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/app.css">
 
     <!-- Page specific styles and scripts -->
     @yield('header')
 
 
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
 
             <!-- Html5 Shim and Respond.js IE8 support of Html5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,20 +27,18 @@
 
 </head>
 <body>
-
+    @include('layouts.errors')
+    <!-- Content -->
+    <div id="TheContentSection" class="container content">
+        @yield('content') 
+    </div>
 <!-- Navigation and header -->
-
-
-<!-- Content -->
-<div class="container content">
-    @yield('content')
-</div>
 
 <!-- Footer -->
 <div class="container-fluid">
-    <div class="row">
-        <div id="footer" class="center-block">
-            <p>All content copyright csc 364 Inc. 2019</p>
+    <div id="rowFooter"class="row">
+        <div id="footer" class="span6" style="float:none; margin: 0 auto;">
+            <p>All content copyright CSC 364 Inc. 2019</p>
         </div>
     </div>
 </div>

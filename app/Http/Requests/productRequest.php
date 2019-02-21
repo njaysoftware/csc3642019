@@ -24,8 +24,15 @@ class productRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            'price' => 'required|numeric',
+            //'description' => 'alpha_num',
+            'sku' => 'numeric|nullable',
+            'qty_available' => 'numeric|nullable',
+            'supplier_ID' => 'numeric|nullable',
+            'supplier_SKU' => 'numeric|nullable',
+            'cost' => 'numeric|nullable',
+            //'url' =>
 
-        ];
+        ]; 
     }
 }
