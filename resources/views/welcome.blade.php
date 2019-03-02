@@ -1,98 +1,64 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.main')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+@section('content')    
+<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+<div class="row" >
+        <div id="titleOfProductsPage" class="col-xs-4 h3 mx-auto">
+            <div class="text-center">Products Available</div>
         </div>
-    </body>
-</html>
+    </div>
+
+    <div class="row">
+        @if ($products)
+            <table id="data_table" class="table table-striped">
+                {{-- Fx this for javascript --}}
+                <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Picture</th>
+                    <th>SKU</th>
+                    <th>Qty Available</th> 
+                    <th>Date Added</th> 
+                    <th>Supplier ID</th> 
+                    <th>Supplier SKU</th> 
+                    <th>Cost</th>                   
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="fbody">
+
+                @foreach ($products as $product)
+                    <tr>
+                        <td>{!! $product['description'] !!}</td>
+                        <td>{!! $product['price'] !!}</td>
+                        <td>{!! $product['picture'] !!}</td>
+                        <td>{!! $product['sku'] !!}</td>
+                        <td>{!! $product['qty_available'] !!}</td>
+                        <td>{!! $product['date_added'] !!}</td>
+                        <td>{!! $product['supplier_ID'] !!}</td>
+                        <td>{!! $product['supplier_SKU'] !!}</td>
+                        <td>{!! $product['cost']!!}</td>
+                        <td>
+                            <a href="/products/{!! $product['id'] !!}" class="button btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span> View</a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+            <!--  $movies->links() !!} -->
+        @else
+        <div class="col-md-6">
+            <h4>No products are in the sytem yet</h4>
+        </div>       
+        @endif
+    </div> 
+    
+    <div class="row">    <!--col-xs-1 col-xs-offset-7 text-center-->
+        <div class="col-md-2 mx-auto" style="margin-top: 20px;">
+            <a id="buttonToCreateNewProduct"href="{!! route('products.create') !!}" class="btn btn-xs btn-success text-align" title="Create new Supplier">
+                <span class="glyphicon glyphicon-plus"></span> Create a New Product</a>
+        </div>
+    </div>
+    
+    @stop

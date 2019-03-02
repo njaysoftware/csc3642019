@@ -27,13 +27,24 @@
 
 </head>
 <body>
+    <!-- Navigation and header -->
+    <header >
+        <div class="container">           
+            <div class="row">
+                <h1 class="col-10 text-left col">CSC 364 Store</h1>
+            </div>
+                               
+        </div>
+        
+    </header>
+
     @include('layouts.errors')
     <!-- Content -->
     <div id="TheContentSection" class="container content">
         @yield('content') 
     </div>
-<!-- Navigation and header -->
 
+    
 <!-- Footer -->
 <div class="container-fluid">
     <div id="rowFooter"class="row">

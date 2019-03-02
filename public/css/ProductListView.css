@@ -1,0 +1,40 @@
+@media(min-width: 0px){
+    .buttons{
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+    }
+
+}
+
+@media(min-width: 576px){
+
+
+}
+
+@media(min-width: 768px) {
+    .buttons {
+        margin: 10px;
+    }
+    .row .buttonRow{
+        position: relative;
+        left: 10px;
+        top: 25%;
+    }
+
+}
+
+@media(min-width: 992px){
+
+}
+
+.blocks {
+    display: inline-block;
+    width: 33rem;
+    background-color: white;
+}
+
+#productRow {
+    margin-top: 10px;
+    margin-bottom: 5px
+}

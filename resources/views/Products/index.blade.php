@@ -1,68 +1,59 @@
+
 @extends('layouts.main')
-
-@section('content')    
+<link href="{{ asset('/css/ProductListView.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-<div class="row" >
-        <div id="titleOfProductsPage" class="col-xs-4 h3 mx-auto">
-            <div class="text-center">Products Available</div>
-        </div>
-    </div>
-
-    <div class="row">
-        @if ($products)
-            <table id="data_table" class="table table-striped">
-                {{-- Fx this for javascript --}}
-                <thead>
-                <tr>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Picture</th>
-                    <th>SKU</th>
-                    <th>Qty Available</th> 
-                    <th>Date Added</th> 
-                    <th>Supplier ID</th> 
-                    <th>Supplier SKU</th> 
-                    <th>Cost</th>                   
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody id="fbody">
-
-                @foreach ($products as $product)
-                    <tr>
-                        <td>{!! $product['description'] !!}</td>
-                        <td>{!! $product['price'] !!}</td>
-                        <td>{!! $product['picture'] !!}</td>
-                        <td>{!! $product['sku'] !!}</td>
-                        <td>{!! $product['qty_available'] !!}</td>
-                        <td>{!! $product['date_added'] !!}</td>
-                        <td>{!! $product['supplier_ID'] !!}</td>
-                        <td>{!! $product['supplier_SKU'] !!}</td>
-                        <td>{!! $product['cost']!!}</td>
-                        <td>
-                            <a href="/products/{!! $product['id'] !!}" class="button btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span> View</a>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-            <!--  $movies->links() !!} -->
-        @else
-        <div class="col-md-6">
-            <h4>No products are in the sytem yet</h4>
-        </div>       
-        @endif
-    </div> 
+@section('content')
+@if ($products)
     
-    <div class="row">    <!--col-xs-1 col-xs-offset-7 text-center-->
-        <div class="col-md-2 mx-auto" style="margin-top: 20px;">
-            <a id="buttonToCreateNewProduct"href="{!! route('products.create') !!}" class="btn btn-xs btn-success text-align" title="Create new Supplier">
-                <span class="glyphicon glyphicon-plus"></span> Create a New Product</a>
-        </div>
-    </div>
+ 
+@foreach ($products as $product)
+    <div class="content">
+        
+            <div class="row" id="productRow" style="background-color: red; border-radius: 20px;">
+                
+                    <div class="col-12 col-sm-6 col-md-4">
+                    <h1></h1>
+                        <img src=""/>
+                    </div>
+                    
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <h3>Description:</h3>
+                        <p>{{$product['description']}}
+                        </p>
+                    </div>
+                    
+                    <div class="col-12 col-sm-12 col-md-4">
+                    <form>
+                        <div class="form-group row">
+                            <label for="select" class="col-12 col-form-label col-sm-4 offset-sm-2">Quantity</label>
+                            <select name="state" class="form-control col-10 offset-1 col-sm-4">
+                                @for ($index = 0; $index <= $product['qty_available']; $index++)
+                                    <option value="{{$index}}">{{$index}}</option>
+                                @endfor 
+                            </select>
+                        </div>
+                    </form>
+                        <div class="row .buttonrow">
+                            <a class="btn btn-primary col-10 offset-1 col-sm-10 offset-sm-1 col-md-5 offset-md-1 buttons" href="" ><i class="fa fa-shopping-cart"></i>  add to cart</a>
+                        <a name="" id="" class="btn btn-primary col-10 offset-1 col-sm-10 offset-sm-1 col-md-5 offset-md-0 buttons" href="/products/{!! $product['id'] !!}" role="button"><i class="fa fa-info"></i>  More Info</a>
+                        </div>
+                    </div>
+                
     
+            </div>
+        </div>    
+    @endforeach
 
-@stop
+
+    
+@else
+    <h1>No products are in the shoppingcart</h1>
+
+    @endif   
+    
+@endsection
+
+
 
 @section('extraJS')
 
