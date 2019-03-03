@@ -46,9 +46,9 @@
 
     
 <!-- Footer -->
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 10px;">
     <div id="rowFooter"class="row">
-        <div id="footer" class="span6" style="float:none; margin: 0 auto;">
+        <div id="footer" class="col-12 text-center col-sm-6 offset-sm-3" >
             <p>All content copyright CSC 364 Inc. 2019</p>
         </div>
     </div>

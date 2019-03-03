@@ -46,9 +46,12 @@
 
 
     
-@else
-    <h1>No products are in the shoppingcart</h1>
-
+    @else
+        <div class="row">
+            <div class="col-12 col-sm-6 offset-sm-3 text-center"
+                <h1>No products are in the shopping cart</h1>
+            </div>
+        </div>
     @endif   
     
 @endsection

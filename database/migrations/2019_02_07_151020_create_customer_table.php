@@ -30,6 +30,7 @@ class CreateCustomerTable extends Migration
             $table->string('billing_state', 32)->nullable();
             $table->string('billing_zip', 16)->nullable();
             $table->tinyInteger('mailing_list')->nullable();
+            $table->boolean('admin')->default(true);
             
             $table->timestamps();
         });

@@ -7,8 +7,14 @@
         <div class="text-center">Please enter product information</div>
     </div>
 </div>
-<form action="{{route('products.store')}}" method="POST">
+<form action="{{route('products.update')}}" method="POST">
     @csrf
+    <div class="form-group row">
+        <label for="name" class="col-4 col-form-label">Name of Product</label> 
+        <div class="col-8">
+          <input id="name" name="bame" type="text" class="form-control">
+        </div>
+      </div> 
     <div class="form-group row">
       <label for="description" class="col-6 col-form-label">Description</label> 
       <div class="col-6">
