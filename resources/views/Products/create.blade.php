@@ -7,12 +7,12 @@
         <div class="text-center">Please enter product information</div>
     </div>
 </div>
-<form action="{{route('products.update')}}" method="POST">
+<form action="{{route('products.store')}}" method="POST">
     @csrf
     <div class="form-group row">
-        <label for="name" class="col-4 col-form-label">Name of Product</label> 
-        <div class="col-8">
-          <input id="name" name="bame" type="text" class="form-control">
+        <label for="name" class="col-6 col-form-label">Name of Product</label> 
+        <div class="col-6">
+          <input id="name" name="name" type="text" class="form-control" placeholder="Product Name">
         </div>
       </div> 
     <div class="form-group row">
@@ -89,7 +89,7 @@
       </div>
     </div> 
     <div class="form-group row">
-      <div class="offset-8 col-6">
+      <div class="col-12 offset-4 col-sm-6 offset-sm-8">
         <button name="submit" type="submit" class="btn btn-primary">Create Product</button>
       </div>
     </div>

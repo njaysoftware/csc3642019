@@ -9,10 +9,10 @@
 @foreach ($products as $product)
     <div class="content">
         
-            <div class="row" id="productRow" style="background-color: red; border-radius: 20px;">
+            <div class="row" id="productRow">
                 
                     <div class="col-12 col-sm-6 col-md-4">
-                    <h1></h1>
+                    <h1>{{$product['name']}}</h1>
                         <img src=""/>
                     </div>
                     
@@ -23,6 +23,10 @@
                     </div>
                     
                     <div class="col-12 col-sm-12 col-md-4">
+                        <div class="row">
+                            <label class="col-12 text-sm-center col-sm-4 offset-sm-2">Price: </label>
+                        <h6 class="col-12 text-sm-center col-sm-4 offset-sm-2">{{$product['price']}}</h6>
+                        </div>
                     <form>
                         <div class="form-group row">
                             <label for="select" class="col-12 col-form-label col-sm-4 offset-sm-2">Quantity</label>

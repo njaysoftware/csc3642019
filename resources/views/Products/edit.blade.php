@@ -8,10 +8,13 @@
     </div>
     <form action="{{route('products.update', $product->id)}}" method="POST">
         @csrf
+        <input name="_method" type="hidden" value="PUT">
+
+    <input type="hidden" name="id" value="{{ $product->id}}">
         <div class="form-group row">
             <label for="name" class="col-6 col-form-label text-right">Name of Product</label> 
             <div class="col-6">
-            <input id="name" name="bame" type="text" value="{{ old('name', $product->name)}}" class="form-control">
+            <input id="name" name="name" type="text" value="{{ old('name', $product->name)}}" class="form-control">
             </div>
           </div> 
         <div class="form-group row">
