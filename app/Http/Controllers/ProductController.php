@@ -6,6 +6,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\productRequest;
 use Carbon\Carbon;
+
 class ProductController extends Controller
 {
     /**
@@ -58,7 +59,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
         return view('products.show')->with('product', $product);
     }
 
@@ -87,6 +87,7 @@ class ProductController extends Controller
         $data = $request->all();
         $product = Product::find($data['id']);
         $product->update($data);
+
         return view('products.show')->with('product', $product);
     }
 
@@ -96,8 +97,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Product $product)
     {
-        //
+        $prod = Product::find($product->id);
+        $prod->delete();
+        return redirect()->route('products.index');
     }
 }

@@ -1,31 +1,22 @@
-@media(min-width: 0px){
-    .buttons{
+@media (min-width: 0px) {
+    .buttons {
         margin-top: 10px;
         margin-bottom: 10px;
-
     }
-
 }
 
-@media(min-width: 576px){
-
-
+@media (min-width: 576px) {
 }
 
-@media(min-width: 768px) {
-    .buttons {
-        margin: 10px;
-    }
-    .row .buttonRow{
+@media (min-width: 768px) {
+    .row .buttonRow {
         position: relative;
         left: 10px;
         top: 25%;
     }
-
 }
 
-@media(min-width: 992px){
-
+@media (min-width: 992px) {
 }
 
 .blocks {
@@ -42,4 +33,12 @@
     border-style: solid;
     border-width: 1px;
     border-color: #efefef;
+}
+
+#PriceRow {
+    margin-top: 20px;
+}
+
+form {
+    margin-bottom: 0px;
 }

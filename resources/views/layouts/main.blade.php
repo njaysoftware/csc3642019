@@ -8,7 +8,7 @@
     <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/app.css">
-
+    <link href="{{ asset('/css/menuNav.css') }}" rel="stylesheet">
     <!-- Page specific styles and scripts -->
     @yield('header')
 
@@ -29,9 +29,12 @@
 <body>
     <!-- Navigation and header -->
     <header >
+        
         <div class="container">           
             <div class="row">
-                <h1 class="col-10 text-left col">CSC 364 Store</h1>
+                <div class="col-12">
+                    @include('partials.menu')  
+                </div>
             </div>
                                
         </div>

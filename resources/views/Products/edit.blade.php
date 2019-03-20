@@ -91,9 +91,18 @@
           </div>
         </div> 
         <div class="form-group row">
-          <div class="offset-8 col-6">
-            <button name="submit" type="submit" class="btn btn-primary">Submit Edit</button>
-          </div>
+            <button name="submit" type="submit" class="btn btn-primary col-12 col-sm-4 offset-sm-7 mb-2">Submit Edit</button>
+            <form method="POST" action="/products/{{$product->id}}">
+              {{method_field('DELETE')}}
+              @csrf
+              <input type="hidden" name="_method" value="DELETE"/>
+              <button type="submit" class="btn btn-primary col-12 col-sm-4 offset-sm-7 mt-2"><i class="fas fa-trash-alt"></i>Delete</button>
+            </form>
         </div>
-      </form>    
+      </form> 
+    <div class="row">
+
+    </div>
+
+
 @endsection

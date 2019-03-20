@@ -66,7 +66,7 @@
                     <div class="row">
                             <div class="col-12 col-sm-4 text-sm-right text-left">
                                 <h3>Supplier SKU:</h3>
-                            </div
+                            </div>
                             <div class="col-12 col-sm-8">
                                 {{$product->supplier_SKU}}
                             </div>
@@ -80,10 +80,10 @@
                             </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-3 offset-sm-3">
+                        <div class="col-12 col-sm-4 offset-sm-2 mt-3">
                                 <a class="btn btn-primary" href="" ><i class="fa fa-shopping-cart"></i>  add to cart</a>
                         </div>
-                        <div class="col-12 col-sm-3 ">
+                        <div class="col-12 col-sm-4  mt-3">
                             <!--come back to only make the edit button show up when the customer is admin privadges -->
                             @if (true)
                         <a class="btn btn-primary" href="/products/{{$product['id']}}/edit" ><i class="fa fa-edit"></i>  edit</a>
