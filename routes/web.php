@@ -1,6 +1,5 @@
 <?php
-
-/*
+ /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -12,7 +11,16 @@
 */
 
 //route for supplier information
+
 Route::resource('/suppliers', 'SupplierController');
 //route for products information
 Route::resource('/products', 'ProductController');
 Route::get('/', 'ProductController@index');
+//route for the route controller.
+Route::resource('/cart', 'CartController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+//this fixes logout issues.
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

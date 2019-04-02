@@ -6,6 +6,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\productRequest;
 use Carbon\Carbon;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -16,10 +17,12 @@ class ProductController extends Controller
      */
     public function index()
     {
+
         //gets the data from the database
         $products = Product::get()->toArray();
+        $data = array('products' => $products, 'user' => auth()->user());
         //returns the index view with all the data and products already popluted
-        return view('Products.index')->with('products', $products);
+        return view('Products.index')->with($data);
     }
 
     /**
@@ -29,7 +32,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //shows the view page
         return view('Products.create');
     }
 

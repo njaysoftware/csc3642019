@@ -27,21 +27,24 @@
                             <label class="col-12  col-sm-4 offset-sm-1">Price: </label>
                         <h6 class="col-12 text-sm-center col-sm-4 offset-sm-2">${{$product['price']}}</h6>
                         </div>
-                    <form>
+                    <form action="{{ route('cart.store') }}" method="POST">
+                        @csrf
                         <div class="form-group row">
+                            <input name="product_id" type="hidden" value="{{ $product['id'] }}">
                             <label for="select" class="col-12 col-form-label col-sm-4 offset-sm-1">Quantity:</label>
-                            <select name="state" class="form-control col-10 offset-1 col-sm-4">
+                            <select name="quantity" class="form-control col-10 offset-1 col-sm-4">
                                 @for ($index = 0; $index <= $product['qty_available']; $index++)
                                     <option value="{{$index}}">{{$index}}</option>
                                 @endfor 
                             </select>
                         </div>
-                    </form>
+                    
                         <div class="row .buttonrow">
-                            <a class="btn btn-primary col-10 offset-1 col-sm-4 offset-sm-1 buttons" href="" ><i class="fa fa-shopping-cart"></i>  add to cart</a>
+                            <button name="submit" type="submit" class="btn btn-primary col-10 offset-1 col-sm-4 offset-sm-1 buttons"><i class="fa fa-shopping-cart"></i>  add to cart</button>
                             <a name="" id="" class="btn btn-primary col-10 offset-1 col-sm-4 offset-sm-1 buttons" href="/products/{!! $product['id'] !!}" role="button"><i class="fa fa-info"></i>  More Info</a>
                         </div>
                     </div>
+                </form>
                 
     
             </div>
