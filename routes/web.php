@@ -19,6 +19,8 @@ Route::get('/', 'ProductController@index');
 //route for the route controller.
 Route::resource('/cart', 'CartController');
 
+Route::post('/cart/{id}/delete', 'CartController@destroy')->name('cart.delete');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

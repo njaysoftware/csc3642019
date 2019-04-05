@@ -18,20 +18,33 @@ class CartController extends Controller
      */
     public function index()
     {
+
         if (Auth::check()) {
             //gets the userId for the logined users
             $userId = Auth::user()->id;
             //get the data from the database
             $cartProducts = Cart::where('user_id', $userId)->with('products')->get()->toArray();
             //returns the user to the cart where they can see what they have bought
+            $this->calculateCartValues($cartProducts[0]['products']);
             return view('Cart.index')->with('cartProducts', $cartProducts[0]['products']);
         } else {
-            //returns this view if the user is not logged in so that 
-            dd("Else statement");
+            //returns this view if the user is not logged in so that the user can see
             return view('Cart.logOut');
         }
     }
 
+    //function to calculate the total for the cart()
+    private function calculateCartValues($cartProducts)
+    {
+        $total = 0;
+        foreach ($cartProducts as $cartProduct) {
+
+            $total = $total + ($cartProduct['quantity'] * $cartProduct['details']['price']);
+        }
+        session()->put('CartTotal', $total);
+        session()->put('TaxTotal', ($total * .06));
+        session()->put('Total', ($total * 1.06));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -76,7 +89,7 @@ class CartController extends Controller
      */
     public function show(Cart $cart)
     {
-        //
+        dd("this is the show method");
     }
 
     /**
@@ -99,19 +112,26 @@ class CartController extends Controller
      */
     public function update(Request $request, Cart $cart)
     {
-        //
+        dd($request->all());
+        /**
+         * TODO:
+         * 1. Make this update method work now that we have the products ID
+         * 2. Make everything look pleasent so that we can make it look presentable
+         * 3. Work on picture uploads so that we can actually use them
+         * 4. Try to figure out why saving something does not fix the issue 
+         */
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy(CartProduct $cart)
     {
+        //this works so leave it as is
         $cartItem = CartProduct::find($cart->id);
         $cartItem->delete();
-        return redirect()->route('cart.idnex');
+        return redirect()->route('cart.index');
     }
 }

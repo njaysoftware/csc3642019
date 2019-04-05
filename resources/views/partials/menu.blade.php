@@ -12,6 +12,9 @@
         <li class="nav-item ">
           <p id="paragraph-in-nav">Hello, {{ Auth::user()->name }}</p>  
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ route('products.index') }}"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i>  Logout</a>
         </li>
@@ -20,7 +23,7 @@
                 <a class="nav-link" href="{{ route('products.create') }}"><i class="fa fa-plus"></i>  Create Product</a>
             </li>
           <li class="nav-item">
-              <a class="nav-link" href="{{ route('suppliers.create') }}"><i class="fa fa-plus"></i>  Create Product</a>
+              <a class="nav-link" href="{{ route('suppliers.create') }}"><i class="fa fa-plus"></i>  Create Supplier</a>
           </li>
         @endif
           <li class="nav-item">

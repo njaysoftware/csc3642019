@@ -85,7 +85,7 @@
                         </div>
                         <div class="col-12 col-sm-4  mt-3">
                             <!--come back to only make the edit button show up when the customer is admin privadges -->
-                            @if (true)
+                            @if (Auth::user()->isAdmin)
                         <a class="btn btn-primary" href="/products/{{$product['id']}}/edit" ><i class="fa fa-edit"></i>  edit</a>
                             @endif                                                            
                         </div>

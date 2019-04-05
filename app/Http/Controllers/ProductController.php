@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\productRequest;
 use Carbon\Carbon;
 use Auth;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -49,6 +51,8 @@ class ProductController extends Controller
         $data['date_added'] = Carbon::now('America/New_York');
         //creates the row in the product table for the data that has been validated already
         $product = Product::create($data);
+        //calls the method to get the picture that the user uploads
+        $this->storePicture($request, $product);
         //sends the user back to the product.index page after they have submitted the quiz
         return redirect()->route('products.index');
     }
@@ -99,7 +103,20 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
+    private function storePicture($request, $product)
+    {
+        if ($request->hasFile('picture') && $request->file('product')->isValid()) {
 
+            $orginalImage = $request->file('picture');
+
+            $image = Image::make($orginalImage)->encode('jpg', 75);
+            $filename = 'product_' . $product->id . '.jpg';
+            if (Storage::disk('web')->exists($filename)) {
+                Storage::delete($filename);
+            }
+            Storage::disk('web')->put($filename, $image->getEncoded());
+        }
+    }
     public function destroy(Product $product)
     {
         $prod = Product::find($product->id);

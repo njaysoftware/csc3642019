@@ -16,6 +16,6 @@ class Cart extends Model
     }
     public function ProductDetails()
     {
-        return $this->hasManyThrough('App\Product', 'App\CartProduct', 'cart_id', 'id', 'id', 'product_id');
+        return $this->hasManyThrough('App\Product', 'App\CartProduct', 'cart_id', 'id', 'id', 'product_id')->withPivot('quantity');
     }
 }

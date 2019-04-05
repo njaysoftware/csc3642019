@@ -43,7 +43,7 @@
               <i class="fa fa-file-picture-o"></i>
             </div>
           </div> 
-          <input id="picture" name="picture" value="{{ old('picture') }}"placeholder="Picture url" type="text" class="form-control">
+          <input class="btn btn-primary" id="picture" name="picture" placeholder="Picture url" type="file" class="form-control">
         </div>
       </div>
     </div>
