@@ -33,7 +33,8 @@
         <div class="container">           
             <div class="row">
                 <div class="col-12">
-                    @include('partials.menu')  
+                    @include('partials.menu')
+                    {{-- @include('partials.alertQuantity')   --}}
                 </div>
             </div>
                                
@@ -70,7 +71,15 @@
     $(document).ready(function() {
         $("#msg").delay(5000).slideUp("slow");
     })
-
+    $(document).ready(function() {
+        $('input[name="action"]').val('It actually Works');
+        $('#increaseButton').click(function(){
+            $('input[name="action"]').val('0');
+        });
+        $('#decreaseButton').click(function(){
+            $('input[name="action"]').val('1');
+        });
+    })
 </script>
 
 @yield('extraJS')

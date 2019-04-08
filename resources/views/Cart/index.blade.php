@@ -33,16 +33,16 @@
                         </div>
                     </div>
                     <div class="row">                            
-                        <form class="form-inline" action="{{ route('cart.update', $cartProduct['details']['id']) }}" method="POST">
+                        <form class="form-inline" action="{{ route('cart.update', $cartProduct['id']) }}" method="POST">
                             @csrf
                             <input type="hidden" name="_method" value="PUT">
-                            <input type="hidden" name="id" value="{{ $cartProduct['id'] }}">
+                            <input type="hidden" name="action" value="{{ $cartProduct['id'] }}">
                             <label class="form-label col-12 col-md-6">Change Quantity</label>
                             <div class=" col-12 col-md-6">
-                                <button name="submit" type="submit" class="btn btn-primary">
+                                <button id="increaseButton" name="submit" type="submit" onsubmit="alert('This Form was submitted')" class="btn btn-primary">
                                     <i class="fa fa-plus"></i>
                                 </button>
-                                <button name="submit" type="submit" class="btn btn-primary">
+                                <button id="decreaseButton" name="submit" type="submit" onclick="Console.log('The Decrease Button was clicked')"class="btn btn-primary">
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div>  
@@ -66,8 +66,8 @@
                 <div class="col-12 text-md-right"> Total For Cart: ${{ session()->get('Total', 0)}}</div>               
             </div>
             <div class="row">                                                    
-                <button class="btn btn-primary col-12 col-md-3 offset-md-6 mt-1 mr-1" href="">Proceed To Checkout</button>                
-                <a class="btn btn-primary col-12 col-md-3 mt-1 ml-1" href="{{ route('products.index') }}">Continue Shopping</a>
+                <button class="btn btn-primary col-12 col-md-3 offset-md-5 mt-1 mr-1" href="">Proceed To Checkout</button>                
+                <a class="btn btn-primary col-12 col-md-3 mt-1" href="{{ route('products.index') }}">Continue Shopping</a>
             </div>
         </div>    
      
@@ -83,11 +83,6 @@
     @endif   
 @endsection
 @section('script')
-
-    <script>
-    
         
-
-    </script>
 
 @endsection

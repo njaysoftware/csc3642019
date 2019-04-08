@@ -26,6 +26,8 @@ class CartController extends Controller
             $cartProducts = Cart::where('user_id', $userId)->with('products')->get()->toArray();
             //returns the user to the cart where they can see what they have bought
             $this->calculateCartValues($cartProducts[0]['products']);
+            // dd($cartProducts);
+
             return view('Cart.index')->with('cartProducts', $cartProducts[0]['products']);
         } else {
             //returns this view if the user is not logged in so that the user can see
@@ -110,9 +112,17 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, CartProduct $cart)
     {
-        dd($request->all());
+        // action = 0 means that the increase button was used to submit the form
+        // action = 1 means the the decrease button was used to submit the form
+        $action = intval($request->all()['action']);
+        if ($action == 0) {
+            $this->increaseOrDecrease(1, $cart->id);
+        } else {
+            $this->increaseOrDecrease(-1, $cart->id);
+        }
+        return redirect()->route('cart.index');
         /**
          * TODO:
          * 1. Make this update method work now that we have the products ID
@@ -120,6 +130,16 @@ class CartController extends Controller
          * 3. Work on picture uploads so that we can actually use them
          * 4. Try to figure out why saving something does not fix the issue 
          */
+    }
+    //function to increase or decrease the quantity of the cart item
+    private function increaseOrDecrease($val, $cartId)
+    {
+        $itemInCart = CartProduct::find($cartId);
+        $itemInCart->quantity = $itemInCart->quantity + $val;
+        $itemInCart->save();
+        if ($itemInCart->quantity <= 0) {
+            $itemInCart->delete();
+        }
     }
     /**
      * Remove the specified resource from storage.

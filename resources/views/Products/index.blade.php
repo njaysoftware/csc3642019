@@ -33,7 +33,7 @@
                             <input name="product_id" type="hidden" value="{{ $product['id'] }}">
                             <label for="select" class="col-12 col-form-label col-sm-4 offset-sm-1">Quantity:</label>
                             <select name="quantity" class="form-control col-10 offset-1 col-sm-4">
-                                @for ($index = 0; $index <= $product['qty_available']; $index++)
+                                @for ($index = 1; $index <= $product['qty_available']; $index++)
                                     <option value="{{$index}}">{{$index}}</option>
                                 @endfor 
                             </select>
