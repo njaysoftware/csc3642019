@@ -7,7 +7,7 @@
         <div class="text-center">Please enter product information</div>
     </div>
 </div>
-<form action="{{route('products.store')}}" method="POST">
+<form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group row">
         <label for="name" class="col-6 col-form-label">Name of Product</label> 
@@ -43,7 +43,7 @@
               <i class="fa fa-file-picture-o"></i>
             </div>
           </div> 
-          <input class="btn btn-primary" id="picture" name="picture" placeholder="Picture url" type="file" class="form-control">
+          <input class="btn btn-primary" id="picture_img" name="picture_img" placeholder="Picture url" type="file" class="form-control">
         </div>
       </div>
     </div>

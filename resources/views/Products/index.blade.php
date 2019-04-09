@@ -12,12 +12,16 @@
             <div class="row" id="productRow">
                 
                     <div class="col-12 col-md-4">
-                    <h1>{{$product['name']}}</h1>
-                        <img src=""/>
+                    <h1 class="mt-1">{{$product['name']}}</h1>
+                    <hr class="mt-0">
+                    @if ($product['picture'] == '1')                        
+                    <img class="img-fluid" src="/storage/product_{{ $product['id'] }}.jpg"/>
+                    @endif    
                     </div>
                     
-                    <div class="col-12 col-md-4">
-                        <h3>Description:</h3>
+                    <div class="col-12 col-md-4 text-center">
+                        <h3 class="mt-1">Description</h3>
+                        <hr class="mt-0">
                         <p>{{$product['description']}}
                         </p>
                     </div>

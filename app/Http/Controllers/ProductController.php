@@ -47,6 +47,12 @@ class ProductController extends Controller
     {
         //gets the data from the form
         $data = $request->all();
+        //if statement to test if a file is uploaded
+        if ($request->hasFile('picture_img')) {
+            $data['picture'] = '1';
+        } else {
+            $data['picture'] = '0';
+        }
         //this line adds the data added by default
         $data['date_added'] = Carbon::now('America/New_York');
         //creates the row in the product table for the data that has been validated already
@@ -105,22 +111,25 @@ class ProductController extends Controller
      */
     private function storePicture($request, $product)
     {
-        if ($request->hasFile('picture') && $request->file('product')->isValid()) {
+        if ($request->hasFile('picture_img') && $request->file('picture_img')->isValid()) {
 
-            $orginalImage = $request->file('picture');
+            $orginalImage = $request->file('picture_img');
 
             $image = Image::make($orginalImage)->encode('jpg', 75);
             $filename = 'product_' . $product->id . '.jpg';
-            if (Storage::disk('web')->exists($filename)) {
+            if (Storage::disk('public')->exists($filename)) {
                 Storage::delete($filename);
             }
-            Storage::disk('web')->put($filename, $image->getEncoded());
+            Storage::disk('public')->put($filename, $image->getEncoded());
         }
     }
     public function destroy(Product $product)
     {
         $prod = Product::find($product->id);
         $prod->delete();
+        if ($prod->picture == '1') {
+            Storage::delete('public/product_' . $product->id . '.jpg');
+        }
         return redirect()->route('products.index');
     }
 }

@@ -42,3 +42,12 @@
 form {
     margin-bottom: 0px;
 }
+h1,
+h3 {
+    font-size: 1.75rem !important;
+    margin-bottom: 0px;
+}
+hr {
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}

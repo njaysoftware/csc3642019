@@ -96,7 +96,7 @@ class CartController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
@@ -125,10 +125,9 @@ class CartController extends Controller
         return redirect()->route('cart.index');
         /**
          * TODO:
-         * 1. Make this update method work now that we have the products ID
-         * 2. Make everything look pleasent so that we can make it look presentable
-         * 3. Work on picture uploads so that we can actually use them
-         * 4. Try to figure out why saving something does not fix the issue 
+         * 1. Make everything look pleasent so that we can make it look presentable
+         * 2. Work on picture uploads so that we can actually use them       
+         * 3. Make session timeouts more elegant then the currently area
          */
     }
     //function to increase or decrease the quantity of the cart item
