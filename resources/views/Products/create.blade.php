@@ -34,16 +34,20 @@
         </div>
       </div>
     </div>
+
     <div class="form-group row">
       <label for="picture" class="col-6 col-form-label">Picture</label> 
-      <div class="col-6">
-        <div class="input-group">
+      <div class="col-6">  
+        <div class="input-group">          
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <i class="fa fa-file-picture-o"></i>
+              <span id="picture-image-add-on">Upload</span>
             </div>
           </div> 
-          <input class="btn btn-primary" id="picture_img" name="picture_img" placeholder="Picture url" type="file" class="form-control">
+          <div class="custom-file">            
+            <input class="custom-file-input" id="picture_img" name="picture_img" placeholder="Picture url" type="file" aria-describedby="picture-image-add-on">          
+            <label id="labelChosenFile" class="custom-file-label" for="picture_img">Choose file</label>
+          </div>
         </div>
       </div>
     </div>
@@ -95,3 +99,4 @@
     </div>
   </form>    
 @endsection
+

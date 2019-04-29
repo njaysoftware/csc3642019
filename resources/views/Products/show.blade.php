@@ -6,28 +6,24 @@
             <div class="card mx-auto" style="width: 80%;">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 col-sm-4 text-sm-right text-left">
-                            <h3>Product Name:</h3>
-                        </div>
-                        <div class="col-12 col-sm-8">
+                        <div class="col-12 text-center">
                             {{$product->name}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-4 text-sm-right text-left">
-                            <h3>Picture:</h3>
-                            
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <img src=""/>
+                        <div class="col-12">
+                            @if ($product->picture == '1')                        
+                                <img class="img-fluid" src="/storage/product_{{ $product['id'] }}.jpg"/>
+                            @endif                                                         
                         </div>
                     </div>
                     
                     <div class="row">
-                            <div class="col-12 col-sm-4 text-sm-right text-left">
-                                <h3>Product Descprtion:</h3>
+                            <div class="col-12 text-center">
+                                <h3>Product Descprtion</h3>
+                                <hr class="mt-0">
                             </div>
-                            <div class="col-12 col-sm-8">
+                            <div class="col-12 text-center">
                                 {{$product->description}}
                             </div>
                         </div> 
@@ -80,13 +76,10 @@
                             </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-4 offset-sm-2 mt-3">
-                                <a class="btn btn-primary" href="" ><i class="fa fa-shopping-cart"></i>  add to cart</a>
-                        </div>
-                        <div class="col-12 col-sm-4  mt-3">
+                        <div class="col-12 col-sm-4  mt-3">                        
                             <!--come back to only make the edit button show up when the customer is admin privadges -->
-                            @if (Auth::user()->isAdmin == 1)
-                        <a class="btn btn-primary" href="/products/{{$product['id']}}/edit" ><i class="fa fa-edit"></i>  edit</a>
+                            @if (Auth::user()->is_admin == 1)
+                        <a class="btn btn-primary" href="/products/{{$product->id}}/edit" ><i class="fa fa-edit"></i>  edit</a>
                             @endif                                                            
                         </div>
                     </div>

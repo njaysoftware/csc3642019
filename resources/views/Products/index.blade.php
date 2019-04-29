@@ -26,12 +26,12 @@
                         </p>
                     </div>
                     
-                    <div class="col-12 col-sm-12 col-md-4">
+                    <div id="price-row" class="col-12 col-sm-12 col-md-4 d-flex flex-column justify-content-end">
                         <div class="row" id="PriceRow">
                             <label class="col-12  col-sm-4 offset-sm-1">Price: </label>
                         <h6 class="col-12 text-sm-center col-sm-4 offset-sm-2">${{$product['price']}}</h6>
                         </div>
-                    <form action="{{ route('cart.store') }}" method="POST">
+                    <form id="add-to-cart" action="{{ route('cart.store') }}" method="POST">
                         @csrf
                         <div class="form-group row">
                             <input name="product_id" type="hidden" value="{{ $product['id'] }}">

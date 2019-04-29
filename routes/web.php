@@ -1,5 +1,5 @@
 <?php
- /*
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -26,3 +26,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //this fixes logout issues.
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+//this adds the resource routes to the command prompt
+Route::resource('/orders', 'OrdersController');

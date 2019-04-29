@@ -1,0 +1,9 @@
+.address {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px var(--transparent-dark-15);
+}
+h1 {
+    font-weight: normal !important;
+    font-size: 2rem !important;
+}

@@ -1,9 +1,10 @@
-<html lang="en">
+<html lang="en" style="height: 100%;">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E-commerce Site</title>
+    <link rel="icon" href="/images/3669215-32.png">
 
     <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
@@ -26,7 +27,7 @@
     <![endif]-->
 
 </head>
-<body>
+<body style="height: 100%;">
     <!-- Navigation and header -->
     <header >
         
@@ -79,6 +80,23 @@
         $('#decreaseButton').click(function(){
             $('input[name="action"]').val('1');
         });
+        $('input[type=checkbox]').change(
+            function(){
+                if($(this).is(':checked')){
+                    $('#billing_address').val($('#shipping_address').val());
+                    $('#billing_city').val($('#shipping_city').val());
+                    $('#billing_state').val($('#shipping_state').val());
+                    $('#billing_zip').val($('#shipping_zip').val());                    
+                }
+                else {
+                    $('#billing_address').val('');
+                    $('#billing_city').val('');
+                    $('#billing_state').val(-1);
+                    $('#billing_zip').val('');
+                }
+            }
+        )
+        
     })
 </script>
 

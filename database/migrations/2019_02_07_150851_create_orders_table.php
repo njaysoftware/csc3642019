@@ -22,11 +22,15 @@ class CreateOrdersTable extends Migration
             $table->string('shipping_city', 128)->nullable();
             $table->string('shipping_state', 32)->nullable();
             $table->string('shipping_zip', 16)->nullable();
+            $table->string('billing_address', 128)->nullable();
+            $table->string('billing_city', 128)->nullable();
+            $table->string('billing_state', 32)->nullable();
+            $table->string('billing_zip', 32)->nullable();
             $table->string('payment_method', 128)->nullable();
             $table->datetime('order_date')->nullable();
-    
+
             $table->index('customer_ID');
-            
+
             $table->timestamps();
         });
     }

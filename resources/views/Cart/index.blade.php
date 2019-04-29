@@ -14,10 +14,14 @@
             <div class="row" id="productRow">
                 <div class="col-12 col-md-4">
                     <h1>{{$cartProduct['details']['name']}}</h1>
-                    <img src=""/>
+                    <hr class="mt-0">
+                    @if ($cartProduct['details']['picture'] == '1')                        
+                    <img class="img-fluid" src="/storage/product_{{ $cartProduct['details']['id'] }}.jpg"/>
+                    @endif 
                 </div>
-                <div class="col-12 col-md-4">
-                    <h3>Description:</h3>
+                <div class="col-12 col-md-4 text-center">
+                    <h3>Description</h3>
+                    <hr class="mt-0">
                     <p>{{$cartProduct['details']['description']}}
                     </p>
                 </div>
@@ -61,13 +65,13 @@
             </div>
     @endforeach
             <div class="row">
-                <div class="col-12 text-md-right">Total Cart Before Tax: ${{ session()->get('CartTotal', 0) }}</div>
-                <div class="col-12 text-md-right"> Tax Total: ${{ session()->get('TaxTotal', 0)}}</div>            
-                <div class="col-12 text-md-right"> Total For Cart: ${{ session()->get('Total', 0)}}</div>               
+                <div class="col-12 text-md-right">Total Cart Before Tax: {{ '$' . ' ' . session()->get('CartTotal', 0) }}</div>
+                <div class="col-12 text-md-right"> Tax Total: {{ '$' . ' ' . session()->get('TaxTotal', 0)}}</div>            
+                <div class="col-12 text-md-right"> Total For Cart: {{'$' . ' ' . session()->get('Total', 0)}}</div>               
             </div>
-            <div class="row">                                                    
-                <button class="btn btn-primary col-12 col-md-3 offset-md-5 mt-1 mr-1" href="">Proceed To Checkout</button>                
-                <a class="btn btn-primary col-12 col-md-3 mt-1" href="{{ route('products.index') }}">Continue Shopping</a>
+            <div class="row d-flex justify-content-end mt-2">                                                    
+                <a class="btn btn-primary  mr-1" href="{{ route('orders.create') }}">Proceed To Checkout</a>                
+                <a class="btn btn-primary  ml-1" href="{{ route('products.index') }}">Continue Shopping</a>
             </div>
         </div>    
      

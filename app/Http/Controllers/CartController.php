@@ -24,28 +24,34 @@ class CartController extends Controller
             $userId = Auth::user()->id;
             //get the data from the database
             $cartProducts = Cart::where('user_id', $userId)->with('products')->get()->toArray();
-            //returns the user to the cart where they can see what they have bought
-            $this->calculateCartValues($cartProducts[0]['products']);
-            // dd($cartProducts);
-
-            return view('Cart.index')->with('cartProducts', $cartProducts[0]['products']);
-        } else {
+            //check to see that the array is not empty and that their are an actual cart in the database
+            if(!empty($cartProducts)){                
+                //returns the user to the cart where they can see what they have bought
+                $this->calculateCartValues($cartProducts[0]['products']);    
+                return view('Cart.index')->with('cartProducts', $cartProducts[0]['products']);
+            }
+            else {
+                return view('Cart.nocart');
+            }
+        } 
+        else {
             //returns this view if the user is not logged in so that the user can see
             return view('Cart.logOut');
         }
     }
 
-    //function to calculate the total for the cart()
+    //method to calculate the total for the cart()
     private function calculateCartValues($cartProducts)
     {
+        setlocale(LC_MONETARY, 'en_US');
         $total = 0;
         foreach ($cartProducts as $cartProduct) {
 
             $total = $total + ($cartProduct['quantity'] * $cartProduct['details']['price']);
         }
-        session()->put('CartTotal', $total);
-        session()->put('TaxTotal', ($total * .06));
-        session()->put('Total', ($total * 1.06));
+        session()->put('CartTotal', money_format( '%i' ,$total));
+        session()->put('TaxTotal', money_format( '%i' ,($total * .06)));
+        session()->put('Total', money_format( '%i' ,($total * 1.06)));
     }
     /**
      * Show the form for creating a new resource.

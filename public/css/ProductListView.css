@@ -14,9 +14,11 @@
         left: 10px;
         top: 25%;
     }
+
 }
 
 @media (min-width: 992px) {
+
 }
 
 .blocks {
@@ -46,6 +48,7 @@ h1,
 h3 {
     font-size: 1.75rem !important;
     margin-bottom: 0px;
+    font-weight: normal !important;
 }
 hr {
     margin-bottom: 0.5rem;
