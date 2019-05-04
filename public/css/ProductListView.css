@@ -14,11 +14,14 @@
         left: 10px;
         top: 25%;
     }
+    
 
 }
 
 @media (min-width: 992px) {
-
+#information-on-total {
+        width: 30%;
+    }
 }
 
 .blocks {
@@ -53,4 +56,12 @@ h3 {
 hr {
     margin-bottom: 0.5rem;
     margin-top: 1rem;
+}
+h6 {
+    font-weight: normal !important;
+}
+
+#information-on-total {
+    background: white;
+    border-radius: 20px;
 }

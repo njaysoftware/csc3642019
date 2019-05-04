@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use App\CartProduct;
 
 class ProductController extends Controller
 {
@@ -96,10 +97,13 @@ class ProductController extends Controller
     public function update(productRequest $request, Product $product)
     {
         //
-        $data = $request->all();
+        $data = $request->all(); 
         $product = Product::find($data['id']);
         $product->update($data);
-
+        if ($product->picture == '1' && $request->hasFile('picture_img')) {
+            Storage::delete('public/product_' . $product->id . '.jpg');
+        }
+        $this->storePicture($request, $product);
         return view('products.show')->with('product', $product);
     }
 
@@ -124,12 +128,18 @@ class ProductController extends Controller
         }
     }
     public function destroy(Product $product)
-    {
+    {   //find the original product
         $prod = Product::find($product->id);
+        //delete the product
         $prod->delete();
+        //look if the product had a picture and if it did then it will be deleted
         if ($prod->picture == '1') {
+            //destroy the picture from storage
             Storage::delete('public/product_' . $product->id . '.jpg');
         }
+        //if the product is in a shopping cart somewhere then we go and find it and delete it so it doesnt show up in the cart anymore
+        CartProduct::where('product_id', $product->id)->delete();
+        //redirect the user to the products.index        
         return redirect()->route('products.index');
     }
 }

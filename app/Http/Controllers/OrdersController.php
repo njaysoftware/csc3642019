@@ -6,6 +6,7 @@ use App\orders;
 use App\OrderDetails;
 use Illuminate\Http\Request;
 use App\Cart;
+use App\CartProduct;
 use DateTime;
 
 class OrdersController extends Controller
@@ -117,6 +118,10 @@ class OrdersController extends Controller
             $orderDetails->quantity = $cartProduct['quantity'];
             $orderDetails->save();
         }
+        //code to remove each cart item from the cart_details
+        $cart = Cart::find($order->customer_ID);
+        //delete the products from the carts products table
+        CartProduct::where('cart_id', $cart->id)->delete();
         session()->put('shippingMethod', $data['shipping_method']);
         session()->put('orderNumber', $data['order_number']);
         return redirect()->route('orders.show', $order->id);
